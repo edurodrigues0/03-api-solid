@@ -1,14 +1,10 @@
 version: "3.8"
 services:
-  postgres:
-    image: postgres:latest
-    restart: always
-    environment:
-      - POSTGRES_USER=docker
-      - POSTGRES_PASSWORD=docker
-    volumes:
-      - postgres:/var/lib/postgresql/data
+  api-solid-pg:
+    image: bitnami/postgresql
     ports:
       - "5432:5432"
-volumes:
-  postgres:
+    environment:
+      - POSTGRES_USERNAME=docker
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_DATABASE=apisolid
