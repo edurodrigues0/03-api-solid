@@ -22,6 +22,15 @@ export class CheckInUseCase {
     userId,
     gymId
   }: CheckInUseCaseRequest): Promise<CheckInUseCaseResponse> {
+    const checkInOnSameDay = await this.checkInsRepostiroy.findByUserIdOnDate(
+      userId,
+      new Date(),
+    )
+
+    if (checkInOnSameDay) {
+      throw new Error()
+    }
+    
     const checkIn = await this.checkInsRepostiroy.create({
       gym_id: gymId,
       user_id: userId
