@@ -8,18 +8,18 @@
  - [X] Deve ser possível se autenticar;
  - [X] Deve ser possível obter o perfil de um usuário logado;
  - [ ] Deve ser possível obter o número de check-ins realizados pelo usuário logado;
- - [ ] Deve ser possível o usuário obter seu histórico de check-ins;
+ - [X] Deve ser possível o usuário obter seu histórico de check-ins;
  - [ ] Deve ser possível o usuário buscar academias próximas;
  - [ ] Deve ser possível o usuário buscar uma academias pelo nome;
  - [X] Deve ser possível o usuário realizar check-in em uma academia;
  - [ ] Deve ser possível validar o check-in de um usuário;
- - [ ] Deve ser possível cadastrar uma academia;
+ - [X] Deve ser possível cadastrar uma academia;
 
  ## RN (Regras de negócio)
 
  - [X] O usuário nao deve poder se cadastrar com um e-mail duplicado;
- - [ ] O usuário nao pode fazer 2 check-ins no mesmo dia;
- - [ ] O usuário nao pode fazer check-in se nao tiver perto(100m) da academia;
+ - [X] O usuário nao pode fazer 2 check-ins no mesmo dia;
+ - [X] O usuário nao pode fazer check-in se nao tiver perto(100m) da academia;
  - [ ] O check-in só pode ser validado até 20 minuto após criado;
  - [ ] O check-in só pode ser validado por administradores;
  - [ ] A academia só pode ser cadastrada por administradores
@@ -28,5 +28,5 @@
 
  - [X] A senha do usuário precisa estar criptografada;
  - [X] Os dados da aplicacao precisam estar persistidos em banco PostgresSQL;
- - [ ] Todas listas de dados precisam estar paginadas com 20 itens por página;
+ - [X] Todas listas de dados precisam estar paginadas com 20 itens por página;
  - [ ] O usuario deve ser identificado por um JWT (JSON Web Token);
