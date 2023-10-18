@@ -29,4 +29,4 @@
  - [X] A senha do usuário precisa estar criptografada;
  - [X] Os dados da aplicacao precisam estar persistidos em banco PostgresSQL;
  - [ ] Todas listas de dados precisam estar paginadas com 20 itens por página;
- - [ ] O usu;ario deve ser identificado por um JWT (JSON Web Token);
+ - [ ] O usuario deve ser identificado por um JWT (JSON Web Token);
