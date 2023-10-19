@@ -8,8 +8,8 @@
  - [X] Deve ser possível se autenticar;
  - [X] Deve ser possível obter o perfil de um usuário logado;
  - [X] Deve ser possível o usuário obter seu histórico de check-ins;
- - [ ] Deve ser possível o usuário buscar academias próximas;
- - [ ] Deve ser possível o usuário buscar uma academias pelo nome;
+ - [X] Deve ser possível o usuário buscar academias próximas (ate 10KM);
+ - [X] Deve ser possível o usuário buscar uma academias pelo nome;
  - [X] Deve ser possível o usuário realizar check-in em uma academia;
  - [ ] Deve ser possível validar o check-in de um usuário;
  - [X] Deve ser possível cadastrar uma academia;
