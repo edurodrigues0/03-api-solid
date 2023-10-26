@@ -5,6 +5,7 @@ import { CheckInUseCase } from "../check-in"
 export function makeCheckInUseCase() {
   const checkInsRepository = new PrismaCheckInsRepository()
   const gymsRepository = new PrismaGymsRepository()
+  
   const usecase = new CheckInUseCase(checkInsRepository, gymsRepository)
 
   return usecase
