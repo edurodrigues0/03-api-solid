@@ -1,12 +1,8 @@
-import { CheckIn } from "@prisma/client";
-import { CheckInsRepository } from "@/repositories/check-ins-repository";
-import { GymsRepository } from "@/repositories/gyms-repository";
-import { ResourceNotFoundError } from "./errors/resource-not-found-error";
-import { getDistanceBetweenCoordinates } from "@/utils/get-distance-between-coordinates";
-import { MaxNumberOfCheckInError } from "./errors/max-number-of-check-ins-error";
-import { MaxDistanceError } from "./errors/max-distance-error";
-import dayjs from "dayjs";
-import { LateCheckInValidationError } from "./errors/late-check-in-validation";
+import { CheckIn } from '@prisma/client'
+import { CheckInsRepository } from '@/repositories/check-ins-repository'
+import { ResourceNotFoundError } from './errors/resource-not-found-error'
+import dayjs from 'dayjs'
+import { LateCheckInValidationError } from './errors/late-check-in-validation'
 
 interface ValidateCheckInUseCaseRequest {
   checkInId: string
@@ -17,12 +13,10 @@ interface ValidateCheckInUseCaseResponse {
 }
 
 export class ValidateCheckInUseCase {
-  constructor(
-    private checkInsRepostiroy: CheckInsRepository
-  ) {}
+  constructor(private checkInsRepostiroy: CheckInsRepository) {}
 
-  async execute({ 
-    checkInId
+  async execute({
+    checkInId,
   }: ValidateCheckInUseCaseRequest): Promise<ValidateCheckInUseCaseResponse> {
     const checkIn = await this.checkInsRepostiroy.findById(checkInId)
 
@@ -40,11 +34,11 @@ export class ValidateCheckInUseCase {
     }
 
     checkIn.validated_at = new Date()
-    
+
     await this.checkInsRepostiroy.save(checkIn)
 
     return {
-      checkIn
+      checkIn,
     }
   }
 }

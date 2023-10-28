@@ -1,6 +1,5 @@
-import { expect, describe, it, beforeEach, vi, afterEach } from 'vitest'
+import { expect, describe, it, beforeEach } from 'vitest'
 import { InMemoryCheckInsRepository } from '@/repositories/in-memory/in-memory-check-ins-repository'
-import { CheckInUseCase } from './check-in'
 import { FetchUserCheckInsHistoryUseCase } from './fetch-user-check-in-history'
 
 let checkInsRepository: InMemoryCheckInsRepository
@@ -15,14 +14,14 @@ describe('Fetch Check-in History Use Case', () => {
   it('should be able to fetch check in history', async () => {
     await checkInsRepository.create({
       gym_id: 'gym-01',
-      user_id: 'user-01'
+      user_id: 'user-01',
     })
 
     await checkInsRepository.create({
       gym_id: 'gym-02',
-      user_id: 'user-01'
+      user_id: 'user-01',
     })
-    
+
     const { checkIns } = await sut.execute({
       userId: 'user-01',
       page: 1,
@@ -31,7 +30,7 @@ describe('Fetch Check-in History Use Case', () => {
     expect(checkIns).toHaveLength(2)
     expect(checkIns).toEqual([
       expect.objectContaining({ gym_id: 'gym-01' }),
-      expect.objectContaining({ gym_id: 'gym-02' })
+      expect.objectContaining({ gym_id: 'gym-02' }),
     ])
   })
 
@@ -39,7 +38,7 @@ describe('Fetch Check-in History Use Case', () => {
     for (let i = 1; i <= 22; i++) {
       await checkInsRepository.create({
         gym_id: `gym-${i}`,
-        user_id: 'user-01'
+        user_id: 'user-01',
       })
     }
 
@@ -51,7 +50,7 @@ describe('Fetch Check-in History Use Case', () => {
     expect(checkIns).toHaveLength(2)
     expect(checkIns).toEqual([
       expect.objectContaining({ gym_id: 'gym-21' }),
-      expect.objectContaining({ gym_id: 'gym-22' })
+      expect.objectContaining({ gym_id: 'gym-22' }),
     ])
   })
 })

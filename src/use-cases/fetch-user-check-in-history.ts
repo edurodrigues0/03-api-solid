@@ -1,5 +1,5 @@
-import { CheckIn } from "@prisma/client";
-import { CheckInsRepository } from "@/repositories/check-ins-repository";
+import { CheckIn } from '@prisma/client'
+import { CheckInsRepository } from '@/repositories/check-ins-repository'
 
 interface FetchUserCheckInsHistoryUseCaseRequest {
   userId: string
@@ -11,18 +11,19 @@ interface FetchUserCheckInsHistoryUseCaseResponse {
 }
 
 export class FetchUserCheckInsHistoryUseCase {
-  constructor(
-    private checkInsRepostiroy: CheckInsRepository,
-  ) {}
+  constructor(private checkInsRepostiroy: CheckInsRepository) {}
 
-  async execute({ 
+  async execute({
     userId,
-    page
+    page,
   }: FetchUserCheckInsHistoryUseCaseRequest): Promise<FetchUserCheckInsHistoryUseCaseResponse> {
-    const checkIns = await this.checkInsRepostiroy.findManyByUserId(userId, page)
-    
+    const checkIns = await this.checkInsRepostiroy.findManyByUserId(
+      userId,
+      page,
+    )
+
     return {
-      checkIns
+      checkIns,
     }
   }
 }

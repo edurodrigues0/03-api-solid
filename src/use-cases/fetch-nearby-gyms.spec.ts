@@ -13,19 +13,19 @@ describe('Fetch Nearby Gyms Use Case', () => {
 
   it('should be able to fetch nearby gyms', async () => {
     await gymsRepository.create({
-      title: "Near Gym",
+      title: 'Near Gym',
       description: null,
       phone: null,
-      latitude:-19.8799342,
-      longitude: -47.4392362
+      latitude: -19.8799342,
+      longitude: -47.4392362,
     })
 
     await gymsRepository.create({
       title: 'Far Gym',
       description: null,
       phone: null,
-      latitude:-19.7703889,
-      longitude: -47.9376458
+      latitude: -19.7703889,
+      longitude: -47.9376458,
     })
 
     const { gyms } = await sut.execute({
@@ -34,8 +34,6 @@ describe('Fetch Nearby Gyms Use Case', () => {
     })
 
     expect(gyms).toHaveLength(1)
-    expect(gyms).toEqual([
-      expect.objectContaining({ title: "Near Gym" }),
-    ])
+    expect(gyms).toEqual([expect.objectContaining({ title: 'Near Gym' })])
   })
 })

@@ -22,7 +22,7 @@ describe('Check-in Use Case', () => {
       description: '',
       phone: '',
       latitude: -19.8799342,
-      longitude: -47.4392362
+      longitude: -47.4392362,
     })
 
     vi.useFakeTimers()
@@ -47,7 +47,7 @@ describe('Check-in Use Case', () => {
 
   it('should not be able to check in twice on the same day', async () => {
     vi.setSystemTime(new Date(2023, 9, 14, 8, 0, 0))
-    
+
     await sut.execute({
       gymId: 'gym-01',
       userId: 'user-01',
@@ -55,17 +55,19 @@ describe('Check-in Use Case', () => {
       userLongitude: -47.4392362,
     })
 
-    await expect(() => sut.execute({
-      gymId: 'gym-01',
-      userId: 'user-01',
-      userLatitude: -19.8799342,
-      userLongitude: -47.4392362,
-    })).rejects.toBeInstanceOf(MaxNumberOfCheckInError)
+    await expect(() =>
+      sut.execute({
+        gymId: 'gym-01',
+        userId: 'user-01',
+        userLatitude: -19.8799342,
+        userLongitude: -47.4392362,
+      }),
+    ).rejects.toBeInstanceOf(MaxNumberOfCheckInError)
   })
 
   it('should be able to check in twice but in different days', async () => {
     vi.setSystemTime(new Date(2023, 9, 14, 8, 0, 0))
-    
+
     await sut.execute({
       gymId: 'gym-01',
       userId: 'user-01',
@@ -92,14 +94,16 @@ describe('Check-in Use Case', () => {
       description: '',
       phone: '',
       latitude: new Decimal(-19.8884657),
-      longitude: new Decimal(-47.3537668)
+      longitude: new Decimal(-47.3537668),
     })
-    
-    await expect(() => sut.execute({
-      gymId: 'gym-02',
-      userId: 'user-01',
-      userLatitude: -19.8799342,
-      userLongitude: -47.4392362,
-    })).rejects.toBeInstanceOf(MaxDistanceError)
+
+    await expect(() =>
+      sut.execute({
+        gymId: 'gym-02',
+        userId: 'user-01',
+        userLatitude: -19.8799342,
+        userLongitude: -47.4392362,
+      }),
+    ).rejects.toBeInstanceOf(MaxDistanceError)
   })
 })
